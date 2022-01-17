@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ClassComponent from './components/ClassComponent';
+import FunctionComponent from './components/FunctionComponent';
 
 function App() {
     const [mount, setMount] = useState(true);
@@ -9,10 +9,10 @@ function App() {
         setState('b');
         setTimeout(() => {
             setMount(false);
-        }, 3000);
-    }, 3000);
+        }, 4000);
+    }, 4000);
 
-    return mount && <ClassComponent prop={state} />;
+    return mount && <FunctionComponent prop={state} />;
 }
 
 export default App;
