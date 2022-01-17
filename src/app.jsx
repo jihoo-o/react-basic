@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import FunctionComponent from './components/FunctionComponent';
+import Chat from './components/Chat';
+import Contacts from './components/Contacts';
+import Dialog from './components/Dialog';
+import SplitPane from './components/SplitPane';
 
 function App() {
-    const [mount, setMount] = useState(true);
-    const [state, setState] = useState('a');
-
-    setTimeout(() => {
-        setState('b');
-        setTimeout(() => {
-            setMount(false);
-        }, 4000);
-    }, 4000);
-
-    return mount && <FunctionComponent prop={state} />;
+    return (
+        <>
+            <Dialog title="welcome" message="Thank you for visiting" />
+            <SplitPane left={<Contacts />} right={<Chat />} />
+        </>
+    );
 }
 
 export default App;
