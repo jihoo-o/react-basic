@@ -12,25 +12,27 @@ code {
         monospace;
 }
 
-.FancyBorder.FancyBorder-red {
-    border: 5px solid red;
+#root {
+    width: 100%;
+    height: 100vh;
 }
 
-.FancyBorder.FancyBorder-orange {
-    border: 5px solid orange;
-}
-
-.SplitPane {
-    border: 5px solid yellow;
+.app-container {
+    height: 100%;
     display: flex;
+    flex-direction: column;
 }
 
-.SplitPane .SplitPane-left {
-    border: 5px solid green;
-    flex-grow: 1;
+#header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
 }
 
-.SplitPane .SplitPane-right {
-    border: 5px solid blue;
+#main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     flex-grow: 1;
 }

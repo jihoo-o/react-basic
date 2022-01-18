@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
-import Chat from './components/Chat';
-import Contacts from './components/Contacts';
-import Dialog from './components/Dialog';
-import SplitPane from './components/SplitPane';
+import Header from './components/Header';
+import Main from './components/Main';
+import { ThemeContext, themes } from './context/theme-context';
+import DarkMode from './theme/DarkMode';
 
 function App() {
+    const [theme, setTheme] = useState('dark');
+
     return (
-        <>
-            <Dialog title="welcome" message="Thank you for visiting" />
-            <SplitPane left={<Contacts />} right={<Chat />} />
-        </>
+        <div className="app-container">
+            <ThemeContext.Provider
+                value={{
+                    theme: themes[theme],
+                    toggleTheme: () => {
+                        theme === 'dark' ? setTheme('light') : setTheme('dark');
+                    },
+                }}
+            >
+                <DarkMode>
+                    <Header />
+                    <Main />
+                </DarkMode>
+            </ThemeContext.Provider>
+        </div>
     );
 }
 
