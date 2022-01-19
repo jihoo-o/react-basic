@@ -1,19 +1,12 @@
-import React, { createRef, useEffect } from 'react';
-import Input from './components/Input';
-import Button from './components/Button';
-
+import React from 'react';
+import useInput from './hooks/useInput';
 function App() {
-    const inputRef = createRef();
-
-    useEffect(() => {
-        console.log(inputRef.current);
-    });
-
+    const maxLen = (value) => value.length < 10;
+    const input = useInput('init', maxLen);
     return (
-        <>
-            <Input ref={inputRef} />
-            <Button />
-        </>
+        <div className="App">
+            <input type="text" {...input} />
+        </div>
     );
 }
 
