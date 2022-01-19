@@ -1,28 +1,19 @@
-import React, { useState } from 'react';
-import Header from './components/Header';
-import Main from './components/Main';
-import { ThemeContext, themes } from './context/theme-context';
-import DarkMode from './theme/DarkMode';
+import React, { createRef, useEffect } from 'react';
+import Input from './components/Input';
+import Button from './components/Button';
 
 function App() {
-    const [theme, setTheme] = useState('dark');
+    const inputRef = createRef();
+
+    useEffect(() => {
+        console.log(inputRef.current);
+    });
 
     return (
-        <div className="app-container">
-            <ThemeContext.Provider
-                value={{
-                    theme: themes[theme],
-                    toggleTheme: () => {
-                        theme === 'dark' ? setTheme('light') : setTheme('dark');
-                    },
-                }}
-            >
-                <DarkMode>
-                    <Header />
-                    <Main />
-                </DarkMode>
-            </ThemeContext.Provider>
-        </div>
+        <>
+            <Input ref={inputRef} />
+            <Button />
+        </>
     );
 }
 
