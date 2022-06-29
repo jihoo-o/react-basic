@@ -3,7 +3,7 @@ import { useState } from 'react';
 /**
  *
  * @param {*} initValue
- * @param {*} validator returns bool
+ * @param {function} validator returns bool
  * @returns
  */
 const useInput = (initValue, validator) => {

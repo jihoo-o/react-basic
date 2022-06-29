@@ -1,11 +1,31 @@
 import React from 'react';
-import useInput from './hooks/useInput';
+import useTabs from './hooks/useTabs';
+
+// from API
+const content = [
+    {
+        tab: 'Section 1',
+        content: "I'm the content of the Section 1",
+    },
+    {
+        tab: 'Section 2',
+        content: "I'm the content of the Section 2",
+    },
+];
+
 function App() {
-    const maxLen = (value) => value.length < 10;
-    const input = useInput('init', maxLen);
+    const { currentItem, onChange } = useTabs(0, content);
+
     return (
         <div className="App">
-            <input type="text" {...input} />
+            <div>
+                {content.map((section, idx) => (
+                    <button key={Math.random()} onClick={() => onChange(idx)}>
+                        {section.tab}
+                    </button>
+                ))}
+            </div>
+            <div>{currentItem.content}</div>
         </div>
     );
 }
