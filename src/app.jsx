@@ -1,5 +1,5 @@
 import React from 'react';
-import useTabs from './hooks/useTabs';
+import useTitle from './hooks/useEffect/useTitle';
 
 // from API
 const content = [
@@ -14,18 +14,25 @@ const content = [
 ];
 
 function App() {
-    const { currentItem, onChange } = useTabs(0, content);
+    const titleUpdater = useTitle('Hello world');
+
+    setTimeout(() => {
+        titleUpdater('time out!');
+    }, 2000);
 
     return (
         <div className="App">
             <div>
                 {content.map((section, idx) => (
-                    <button key={Math.random()} onClick={() => onChange(idx)}>
+                    <button
+                        key={Math.random()}
+                        onClick={() => titleUpdater(section.tab)}
+                    >
                         {section.tab}
                     </button>
                 ))}
             </div>
-            <div>{currentItem.content}</div>
+            <h1 className="title"></h1>
         </div>
     );
 }
