@@ -1,14 +1,20 @@
 import React from 'react';
-import useNetwork from './hooks/useEffect/useNetwork.js';
+import useScroll from './hooks/useEffect/useScroll.js';
 
 function App() {
-    const onLine = useNetwork((onLine) => {
-        console.log(onLine);
-    });
+    const { y } = useScroll();
 
     return (
         <div className="App">
-            <h1>{onLine ? 'OnLine' : 'OffLine'}</h1>
+            <div
+                style={{
+                    background: `${y > 100 ? 'red' : 'blue'}`,
+                    width: '100wd',
+                    height: '200vh',
+                }}
+            >
+                Hello world
+            </div>
         </div>
     );
 }
