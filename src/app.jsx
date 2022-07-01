@@ -1,14 +1,14 @@
 import React from 'react';
-import useFadeIn from './hooks/useEffect/useFadeIn';
+import useNetwork from './hooks/useEffect/useNetwork.js';
 
 function App() {
-    const fadeInH1 = useFadeIn({ duration: 3 });
-    const fadeInP = useFadeIn({ duration: 5, delay: 2 });
+    const onLine = useNetwork((onLine) => {
+        console.log(onLine);
+    });
 
     return (
         <div className="App">
-            <h1 {...fadeInH1}>Fade in 3s</h1>
-            <p {...fadeInP}>Fade in 5s</p>
+            <h1>{onLine ? 'OnLine' : 'OffLine'}</h1>
         </div>
     );
 }
