@@ -1,18 +1,31 @@
 import React from 'react';
-import useClick from './hooks/useEffect/useClick';
+import useConfirm from './hooks/useConfirm';
+import usePreventLeave from './hooks/usePreventLeave';
 
 function App() {
-    const ref = useClick({
-        onClick: () => {
-            window.alert('worked out!');
+    const confirmLeave = useConfirm({
+        message: 'Are you sure you want to exit?',
+        onConfirm: () => {
+            window.alert('Bye!');
+        },
+        onCancel: () => {
+            window.alert('Aborted');
         },
     });
 
+    const { enablePrevent, disablePrevent } = usePreventLeave();
+
     return (
         <div className="App">
-            <h1 ref={ref} style={{ background: 'red' }}>
-                Click here!
-            </h1>
+            <div>
+                <h3>useConfirm</h3>
+                <button onClick={confirmLeave}>Leave</button>
+            </div>
+            <div>
+                <h3>usePreventLeave</h3>
+                <button onClick={enablePrevent}>protect</button>
+                <button onClick={disablePrevent}>unprotect</button>
+            </div>
         </div>
     );
 }
