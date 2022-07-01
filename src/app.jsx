@@ -1,20 +1,21 @@
 import React from 'react';
-import useScroll from './hooks/useEffect/useScroll.js';
+import useFullscreen from './hooks/useEffect/useFullscreen.js';
 
 function App() {
-    const { y } = useScroll();
+    const onFullscreenChange = () => {};
+
+    const { imageRef, triggerFull, exitFull } =
+        useFullscreen(onFullscreenChange);
 
     return (
         <div className="App">
-            <div
-                style={{
-                    background: `${y > 100 ? 'red' : 'blue'}`,
-                    width: '100wd',
-                    height: '200vh',
-                }}
-            >
-                Hello world
-            </div>
+            <img
+                ref={imageRef}
+                onClick={exitFull}
+                src="https://picsum.photos/200/300"
+                alt=""
+            />
+            <button onClick={triggerFull}>full screen</button>
         </div>
     );
 }
