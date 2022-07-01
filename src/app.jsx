@@ -1,8 +1,17 @@
 import React from 'react';
 import useConfirm from './hooks/useConfirm';
+import useBeforeLeave from './hooks/useEffect/useBeforeLeave';
 import usePreventLeave from './hooks/usePreventLeave';
 
 function App() {
+    const handleBeforeLeave = (event) => {
+        if (event.clientY <= 0) {
+            confirmLeave();
+        }
+    };
+
+    useBeforeLeave(handleBeforeLeave);
+
     const confirmLeave = useConfirm({
         message: 'Are you sure you want to exit?',
         onConfirm: () => {
