@@ -1,40 +1,14 @@
 import React from 'react';
-import useConfirm from './hooks/useConfirm';
-import useBeforeLeave from './hooks/useEffect/useBeforeLeave';
-import usePreventLeave from './hooks/usePreventLeave';
+import useFadeIn from './hooks/useEffect/useFadeIn';
 
 function App() {
-    const handleBeforeLeave = (event) => {
-        if (event.clientY <= 0) {
-            confirmLeave();
-        }
-    };
-
-    useBeforeLeave(handleBeforeLeave);
-
-    const confirmLeave = useConfirm({
-        message: 'Are you sure you want to exit?',
-        onConfirm: () => {
-            window.alert('Bye!');
-        },
-        onCancel: () => {
-            window.alert('Aborted');
-        },
-    });
-
-    const { enablePrevent, disablePrevent } = usePreventLeave();
+    const fadeInH1 = useFadeIn({ duration: 3 });
+    const fadeInP = useFadeIn({ duration: 5, delay: 2 });
 
     return (
         <div className="App">
-            <div>
-                <h3>useConfirm</h3>
-                <button onClick={confirmLeave}>Leave</button>
-            </div>
-            <div>
-                <h3>usePreventLeave</h3>
-                <button onClick={enablePrevent}>protect</button>
-                <button onClick={disablePrevent}>unprotect</button>
-            </div>
+            <h1 {...fadeInH1}>Fade in 3s</h1>
+            <p {...fadeInP}>Fade in 5s</p>
         </div>
     );
 }
