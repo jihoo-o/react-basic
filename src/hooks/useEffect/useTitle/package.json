@@ -1,0 +1,26 @@
+{
+    "name": "@seonhwakei/use-title",
+    "version": "1.0.2",
+    "description": "React Hook to update your document's title",
+    "main": "useTitle.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kmseonhwa/react-basic.git"
+    },
+    "keywords": [
+        "react",
+        "hooks",
+        "title",
+        "practice"
+    ],
+    "author": "Nomad coders",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/kmseonhwa/react-basic/issues"
+    },
+    "homepage": "https://github.com/kmseonhwa/react-basic#readme",
+    "peerDependencies": {
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    }
+}
